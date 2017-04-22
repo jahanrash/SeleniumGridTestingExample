@@ -27,8 +27,6 @@ public class TestLocalFirefox {
 	@BeforeTest
 	public void launchbrowser() throws MalformedURLException {
 		URL = "https://bryant.pprd.goalquestprogram.com";
-		System.setProperty("webdriver.gecko.driver", "C:\\Software\\geckodriver.exe");
-		
 		String Node = "http://192.168.0.108:5557/wd/hub";
 		DesiredCapabilities cap = DesiredCapabilities.firefox();
 		cap.setBrowserName("firefox");

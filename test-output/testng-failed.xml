@@ -1,15 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
-<suite guice-stage="DEVELOPMENT" name="Failed suite [Default suite]">
-  <test name="Default test(failed)">
+<suite guice-stage="DEVELOPMENT" name="Failed suite [Suite]" parallel="tests">
+  <test name="FirefoxTest(failed)" parallel="tests">
+    <parameter name="browser" value="firefox"/>
     <classes>
-      <class name="bi.com.seleniumgrid.TestLocalFirefox">
+      <class name="bi.com.seleniumgrid.TestGridClass">
         <methods>
-          <include name="launchbrowser"/>
           <include name="calculatepercent"/>
+          <include name="launchbrowser"/>
+          <include name="launchbrowser"/>
+          <include name="closeBrowser"/>
           <include name="closeBrowser"/>
         </methods>
-      </class> <!-- bi.com.seleniumgrid.TestLocalFirefox -->
+      </class> <!-- bi.com.seleniumgrid.TestGridClass -->
     </classes>
-  </test> <!-- Default test(failed) -->
-</suite> <!-- Failed suite [Default suite] -->
+  </test> <!-- FirefoxTest(failed) -->
+</suite> <!-- Failed suite [Suite] -->

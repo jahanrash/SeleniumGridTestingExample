@@ -6,6 +6,7 @@ import java.net.URL;
 import java.util.concurrent.TimeUnit;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.remote.RemoteWebDriver;
 import org.testng.Assert;
@@ -27,9 +28,9 @@ public class TestGridClass {
 	public void launchbrowser(String browser) throws MalformedURLException {
 		String URL = "https://bryant.pprd.goalquestprogram.com";
 		if (browser.equalsIgnoreCase("firefox")) {
-		System.setProperty("webdriver.gecko.driver", "C:\\Software\\geckodriver.exe");	
 		System.out.println(" Executing on FireFox");
-		String Node = "http://192.168.0.121:5557/wd/hub";
+		String Node = "http://192.168.0.108:5557/wd/hub";
+		//String Node = "http://192.168.0.121:5557/wd/hub";
 		DesiredCapabilities cap = DesiredCapabilities.firefox();
 		cap.setBrowserName("firefox");
 		driver = new RemoteWebDriver(new URL(Node), cap);
@@ -44,6 +45,7 @@ public class TestGridClass {
 		DesiredCapabilities cap = DesiredCapabilities.chrome();
 		cap.setBrowserName("chrome");
 		String Node = "http://192.168.0.121:5556/wd/hub";
+		//String Node = "http://172.17.0.10:5555/wd/hub";
 		driver = new RemoteWebDriver(new URL(Node), cap);
 		driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
 		// Launch website
