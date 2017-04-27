@@ -6,6 +6,7 @@ import java.net.URL;
 import java.util.concurrent.TimeUnit;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import io.github.bonigarcia.wdm.ChromeDriverManager;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.remote.RemoteWebDriver;
@@ -33,7 +34,7 @@ public class TestGridClass {
 		//String Node = "http://192.168.0.121:5557/wd/hub";
 		DesiredCapabilities cap = DesiredCapabilities.firefox();
 		cap.setBrowserName("firefox");
-		
+
 		ChromeDriverManager.getInstance().setup();
 
 		driver = new RemoteWebDriver(new URL(Node), cap);
