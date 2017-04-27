@@ -17,16 +17,21 @@
 
 package bi.com.seleniumgrid;
 
-import org.junit.After;
-import org.junit.Before;
-import org.junit.BeforeClass;
-import org.junit.Test;
+// import org.junit.After;
+// import org.junit.Before;
+// import org.junit.BeforeClass;
+// import org.junit.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.phantomjs.PhantomJSDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
+import org.testng.annotations.BeforeSuite;
+import org.testng.annotations.AfterTest;
+import org.testng.annotations.BeforeTest;
+import org.testng.annotations.Parameters;
+import org.testng.annotations.Test;
 import io.github.bonigarcia.wdm.PhantomJsDriverManager;
 
 /**
@@ -40,17 +45,17 @@ public class PhantomJsTest {
   private WebDriver driver;
   String pageTitle;
 
-  @BeforeClass
+  @BeforeSuite
   public static void setupClass() {
     PhantomJsDriverManager.getInstance().setup();
   }
 
-  @Before
+  @BeforeTest
   public void setupTest() {
     driver = new PhantomJSDriver();
   }
 
-  @After
+  @AfterTest
   public void teardown() {
     if (driver != null) {
       driver.quit();
