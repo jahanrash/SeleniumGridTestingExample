@@ -35,7 +35,7 @@ import io.github.bonigarcia.wdm.PhantomJsDriverManager;
  * @author Boni Garcia (boni.gg@gmail.com)
  * @since 1.0.0
  */
-public class PhatomJsTest {
+public class PhantomJsTest {
 
   private WebDriver driver;
 

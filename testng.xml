@@ -4,7 +4,7 @@
 	<test name="PhantomJsTest">
 		<parameter name="browser" value="chrome" />
 		<classes>
-			<class name="bi.com.seleniumgrid.PhatomJsTest" />
+			<class name="bi.com.seleniumgrid.PhantomJsTest" />
 		</classes>
 	</test>
 	<!--
