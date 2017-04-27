@@ -38,6 +38,7 @@ import io.github.bonigarcia.wdm.PhantomJsDriverManager;
 public class PhantomJsTest {
 
   private WebDriver driver;
+  String pageTitle;
 
   @BeforeClass
   public static void setupClass() {
@@ -62,8 +63,8 @@ public class PhantomJsTest {
     WebDriverWait wait = new WebDriverWait(driver, 30); // 30 seconds of timeout
     driver.get("https://en.wikipedia.org/wiki/Main_Page"); // navigate to Wikipedia
 
-    pageTitgle = driver.getTitle().trim();
-    Assert.assertEquals(pageTitgle, "GoalQuest");    
+    pageTitle = driver.getTitle().trim();
+    Assert.assertEquals(pageTitle, "GoalQuest");    
 
     By searchInput = By.id("searchInput"); // search for "Software"
     wait.until(ExpectedConditions.presenceOfElementLocated(searchInput));
