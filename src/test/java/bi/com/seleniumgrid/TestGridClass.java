@@ -24,12 +24,6 @@ public class TestGridClass {
 	String sActivationLink;
 	protected ThreadLocal<RemoteWebDriver> threadDriver = null;
 	@Parameters("browser")
-
-	@BeforeClass
-	public static void setupClass() {
-		ChromeDriverManager.getInstance().setup();
-	}
-
 	@BeforeTest
 	public void launchbrowser(String browser) throws MalformedURLException {
 		String URL = "https://bryant.pprd.goalquestprogram.com";
@@ -39,6 +33,9 @@ public class TestGridClass {
 		//String Node = "http://192.168.0.121:5557/wd/hub";
 		DesiredCapabilities cap = DesiredCapabilities.firefox();
 		cap.setBrowserName("firefox");
+		
+		ChromeDriverManager.getInstance().setup();
+
 		driver = new RemoteWebDriver(new URL(Node), cap);
 		// Puts an Implicit wait, Will wait for 10 seconds before throwing
 		// exception
