@@ -66,6 +66,8 @@ public class PhantomJsTest {
     pageTitle = driver.getTitle().trim();
     Assert.assertEquals(pageTitle, "GoalQuest");    
 
+    System.out.println("Page title is: " + driver.getTitle());
+
     By searchInput = By.id("searchInput"); // search for "Software"
     wait.until(ExpectedConditions.presenceOfElementLocated(searchInput));
     driver.findElement(searchInput).sendKeys("Software");
