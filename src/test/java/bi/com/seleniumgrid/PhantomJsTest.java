@@ -21,18 +21,19 @@ package bi.com.seleniumgrid;
 // import org.junit.Before;
 // import org.junit.BeforeClass;
 // import org.junit.Test;
+
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.phantomjs.PhantomJSDriver;
+import org.openqa.selenium.phantomjs.PhantomJSDriverService;
+import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
-import org.testng.annotations.BeforeSuite;
 import org.testng.annotations.AfterTest;
+import org.testng.annotations.BeforeSuite;
 import org.testng.annotations.BeforeTest;
-import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
-import io.github.bonigarcia.wdm.PhantomJsDriverManager;
 
 /**
  * Test with PhantomJS.
@@ -42,12 +43,14 @@ import io.github.bonigarcia.wdm.PhantomJsDriverManager;
  */
 public class PhantomJsTest {
 
+  private static String PHANTOMJS_BINARY ;
   private WebDriver driver;
   String pageTitle;
 
   @BeforeSuite
   public static void setupClass() {
-    PhantomJsDriverManager.getInstance().setup();
+    PHANTOMJS_BINARY = System.getProperty("phantomjs.binary");
+    //PhantomJsDriverManager.getInstance().setup();
   }
 
   @BeforeTest
@@ -64,12 +67,25 @@ public class PhantomJsTest {
 
   @Test
   public void test() {
+
+    final DesiredCapabilities capabilities = new DesiredCapabilities();
+
+    // Configure our WebDriver to support JavaScript and be able to find the PhantomJS binary
+    capabilities.setJavascriptEnabled(true);
+    capabilities.setCapability("takesScreenshot", false);
+    capabilities.setCapability(
+            PhantomJSDriverService.PHANTOMJS_EXECUTABLE_PATH_PROPERTY,
+            PHANTOMJS_BINARY
+    );
+
+    final WebDriver driver = new PhantomJSDriver(capabilities);
     // Your test code here. For example:
     WebDriverWait wait = new WebDriverWait(driver, 30); // 30 seconds of timeout
     driver.get("https://en.wikipedia.org/wiki/Main_Page"); // navigate to Wikipedia
 
     pageTitle = driver.getTitle().trim();
-    Assert.assertEquals(pageTitle, "GoalQuest");    
+    Assert.assertEquals(pageTitle, "GoalQuest");
+
 
     System.out.println("Page title is: " + driver.getTitle());
 
